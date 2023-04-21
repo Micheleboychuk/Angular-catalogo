@@ -2,7 +2,7 @@ export interface Device {
   label: string;
   os: string;
   rate: number;
-  prace: number;
+  price: number;
   desc: string;
   id: number;
 }
