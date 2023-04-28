@@ -6,37 +6,36 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'mb-catalog',
   template: `
-    <form #f="ngForm" (submit)="save(f)">
+    <form #f="ngForm" (submit)="save(f)" (reset)="clear(f)">
         <input
                type="text"
                [ngModel]="active?.label"
                name="label"
                required
                class="form-control"
-               placeholder="Model"
-        >
+               placeholder="Device Model">
         <input
                type="number"
                [ngModel]="active?.price"
                name="price"
                class="form-control"
-               placeholder="price"
-        >
+               placeholder="Price">
         <button type="submit" class="btn btn-warning"> {{active ? "EDIT" : "ADD"}} </button>
+        <button type="reset" class="btn btn-warning"> CLEAR </button>
     </form>
 
     <hr>
 
-    <div class="list-group-item"
+    <span class="card"
          *ngFor="let device of devices"
          (click)="setActive(device)"
          [ngClass]="{'active': device.id === active?.id}"
          >
          {{device.label}}
-      <div class="fa-pull-right">
+      <span class="">
           <i class="fa fa-trash" (click)="deleteHandler(device)"></i>
-      </div>
-    </div>
+      </span>
+    </span>
   `,
 })
 export class CatalogComponent {
@@ -59,13 +58,32 @@ export class CatalogComponent {
   }
 
   save(form: NgForm) {
-    console.log(form.value);
-    this.add(form);
+    if(this.active) {
+      this.edit(form);
+    } else {
+      this.add(form);
+    }
+  }
+
+  clear(form: NgForm) {
+    this.active=null;
   }
 
   add(form: NgForm) {
-    this.http.post<Device>(`http://localhost:3000/devices/`, form.value)
-      .subscribe(result => {this.devices.push(result)});
+    if(form.value.label != null) {
+      this.http.post<Device>(`http://localhost:3000/devices/`, form.value)
+        .subscribe(result => {
+          this.devices.push(result)
+        });
+    }
+  }
+
+  edit(form: NgForm) {
+    this.http.patch<Device>(`http://localhost:3000/devices/${this.active?.id}`, form.value)
+      .subscribe(res => {
+        const index = this.devices.findIndex(d => d.id === this.active?.id);
+        this.devices[index] = res;
+      })
   }
 
   setActive(device: Device) {

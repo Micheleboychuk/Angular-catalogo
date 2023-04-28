@@ -1,7 +1,7 @@
 {
   "devices": [
     {
-      "label": "IPhone X",
+      "label": "IPhone X2",
       "os": "ios",
       "price": 1200,
       "rate": 4,
@@ -33,7 +33,7 @@
       "id": 8
     },
     {
-      "label": "Samsung S10",
+      "label": "Samsung S10-2121",
       "price": 9993,
       "os": "android",
       "rate": 4,
@@ -44,6 +44,11 @@
       "label": "Iphone 14",
       "price": 12,
       "id": 10
+    },
+    {
+      "label": "One Plus 6t",
+      "price": 4777,
+      "id": 11
     }
   ],
   "login": {
