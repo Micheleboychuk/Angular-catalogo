@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'mb-catalog',
   template: `
-    <form #f="ngForm" (submit)="save(f)" (reset)="clear(f)">
+    <form #f="ngForm" (submit)="save(f)">
         <input
                type="text"
                [ngModel]="active?.label"
@@ -20,22 +20,21 @@ import { NgForm } from '@angular/forms';
                name="price"
                class="form-control"
                placeholder="Price">
+
+      <div class="btn-group">         
         <button type="submit" class="btn btn-warning"> {{active ? "EDIT" : "ADD"}} </button>
-        <button type="reset" class="btn btn-warning"> CLEAR </button>
+        <button type="button" *ngIf="active" class="btn btn-warning" (click)="reset(f)"> RESET </button>
+      </div>
     </form>
 
     <hr>
-
-    <span class="card"
-         *ngFor="let device of devices"
-         (click)="setActive(device)"
-         [ngClass]="{'active': device.id === active?.id}"
-         >
-         {{device.label}}
-      <span class="">
-          <i class="fa fa-trash" (click)="deleteHandler(device)"></i>
-      </span>
-    </span>
+    <mb-catalog-list 
+        [devices]="devices"
+        [active]="active"
+        (setActive)="setActive($event)"
+        (delete)="deleteHandler($event)"
+        > 
+    </mb-catalog-list>
   `,
 })
 export class CatalogComponent {
@@ -65,8 +64,9 @@ export class CatalogComponent {
     }
   }
 
-  clear(form: NgForm) {
+  reset(form: NgForm) {
     this.active=null;
+    form.reset();
   }
 
   add(form: NgForm) {

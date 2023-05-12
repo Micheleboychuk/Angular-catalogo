@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CatalogComponent } from './features/catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CatalogListComponent } from './features/catalog/catalog/calatalo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatalogComponent
+    CatalogComponent,
+    CatalogListComponent
   ],
   imports: [
     BrowserModule,
