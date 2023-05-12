@@ -7,12 +7,14 @@ import { CatalogComponent } from './features/catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CatalogListComponent } from './features/catalog/catalog/calatalo-list.component';
+import { CatalogFormComponent } from './features/catalog/catalog-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatalogComponent,
-    CatalogListComponent
+    CatalogListComponent,
+    CatalogFormComponent
   ],
   imports: [
     BrowserModule,
