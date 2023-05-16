@@ -25,7 +25,7 @@ import { Device } from './model/device';
 })
 export class CatalogComponent {
   devices: Device[] = [];
-  active: Device | null = null;
+  active: Device = { };
   constructor(private http: HttpClient) {
        this.getAll();
   }
@@ -48,7 +48,7 @@ export class CatalogComponent {
       this.http.post<Device>(`http://localhost:3000/devices/`, device)
                .subscribe(result => {
                   this.devices.push(result);
-                  this.active = null;
+                  this.active = { };
                });
     }
   }
@@ -66,11 +66,11 @@ export class CatalogComponent {
   }
 
   reset() {
-    this.active = null;
+    this.active = { };
   }
 
   save(device: Device) {
-    if (this.active) {
+    if (this.active?.id) {
        this.edit(device);
     } else {
       this.add(device);
