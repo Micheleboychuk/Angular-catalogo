@@ -8,14 +8,14 @@ import { NgForm } from '@angular/forms';
     <form #f="ngForm" (submit)="saveHandler(f)">
       <input
         type="text"
-        [ngModel]="active?.label"
+        [ngModel]="active.label"
         name="label"
         required
         class="form-control"
         placeholder="Device Model">
       <input
         type="number"
-        [ngModel]="active?.price"
+        [ngModel]="active.price"
         name="price"
         class="form-control"
         placeholder="Price">
@@ -24,7 +24,7 @@ import { NgForm } from '@angular/forms';
         <button type="submit"
                 class="btn btn-warning"
         >
-          {{active?.id ? "EDIT" : "ADD"}}
+          {{active.id ? "EDIT" : "ADD"}}
         </button>
         <button type="button"
                 class="btn btn-warning"
