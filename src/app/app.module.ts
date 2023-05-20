@@ -9,14 +9,18 @@ import { FormsModule } from '@angular/forms';
 import { CatalogListComponent } from './features/catalog/catalog/calatalo-list.component';
 import { CatalogFormComponent } from './features/catalog/catalog-form.component';
 import { OsIconComponent } from './features/catalog/components/os-icon.component';
+import { CardComponent } from './shared/components/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // features: catalog
     CatalogComponent,
     CatalogListComponent,
     CatalogFormComponent,
-    OsIconComponent
+    OsIconComponent,
+    // shared
+    CardComponent
   ],
   imports: [
     BrowserModule,

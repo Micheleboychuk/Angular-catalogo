@@ -5,22 +5,24 @@ import { CatalogStore } from './services/catalog.store';
 @Component({
   selector: 'mb-catalog',
   template: `
-    <mb-catalog-form
-      [active]="store.active"
-      (save)="actions.save($event)"
-      (reset)="actions.reset()"
-    >
-    </mb-catalog-form>
+    <mb-card title="FORM">
+        <mb-catalog-form
+          [active]="store.active"
+          (save)="actions.save($event)"
+          (reset)="actions.reset()"
+        >
+        </mb-catalog-form>
+    </mb-card>
 
-    <hr>
-
-    <mb-catalog-list
-      [devices]="store.devices"
-      [active]="store.active"
-      (setActive)="actions.setActive($event)"
-      (delete)="actions.deleteHandler($event)"
-    >
-    </mb-catalog-list>
+    <mb-card title="LIST">
+        <mb-catalog-list
+          [devices]="store.devices"
+          [active]="store.active"
+          (setActive)="actions.setActive($event)"
+          (delete)="actions.deleteHandler($event)"
+        >
+        </mb-catalog-list>
+    </mb-card>
   `,
 })
 export class CatalogComponent {
