@@ -10,6 +10,8 @@ import { Device } from '../model/device';
           [ngClass]="{'active': device.id === active?.id}"
           >
           {{device.label}}
+          <mb-os-icon [os]="device.os"> </mb-os-icon>
+          <span [style.color]="'red'"> {{device.price | number: '1.2-2'}} </span>
         <span> 
           <i class="fa fa-trash" (click)="delete.emit(device)"></i>
         </span>
