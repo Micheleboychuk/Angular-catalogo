@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'mb-root',
   template: `
-    <div class="container mg-3">
+    <mb-navbar> </mb-navbar>
+    <div class="container mt-3">
          <router-outlet> </router-outlet>
     </div>
   `,

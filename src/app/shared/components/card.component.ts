@@ -13,7 +13,7 @@ import { Component, Input } from "@angular/core";
                             'fa-arrow-right': opened,
                             'fa-arrow-down': !opened
                             }"
-                    ></i>
+                        ></i>
                     {{title}}
                 </div>
                 <div class="card-body" *ngIf="opened"> 

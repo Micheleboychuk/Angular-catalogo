@@ -10,6 +10,8 @@ import { CatalogListComponent } from './features/catalog/catalog/calatalo-list.c
 import { CatalogFormComponent } from './features/catalog/catalog-form.component';
 import { OsIconComponent } from './features/catalog/components/os-icon.component';
 import { CardComponent } from './shared/components/card.component';
+import { NavbarComponent } from './core/components/navbar.component';
+import { HomeComponent } from './features/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CardComponent } from './shared/components/card.component';
     CatalogFormComponent,
     OsIconComponent,
     // shared
-    CardComponent
+    CardComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
