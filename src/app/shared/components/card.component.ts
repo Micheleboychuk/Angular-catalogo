@@ -6,7 +6,16 @@ import { Component, Input } from "@angular/core";
             <div class="card bg-dark mb-3">
                 <div 
                     class="card-header text-white"
-                    (click)="opened = !opened"> {{title}} </div>
+                    (click)="opened = !opened"
+                    >
+                    <i class="fa"
+                       [ngClass]="{
+                            'fa-arrow-right': opened,
+                            'fa-arrow-down': !opened
+                            }"
+                    ></i>
+                    {{title}}
+                </div>
                 <div class="card-body" *ngIf="opened"> 
                     <ng-content> </ng-content> 
                 </div>
